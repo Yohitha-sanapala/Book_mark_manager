@@ -1,7 +1,6 @@
-
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel
 
 class Bookmark(BaseModel):
     title: str
-    url: HttpUrl
+    url: str
     description: str

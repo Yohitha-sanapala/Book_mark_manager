@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bookmark Manager</title>
+</head>
+<body>
+    <h1>Bookmarks</h1>
+    <ul>
+        {% for bookmark in bookmarks %}
+            <li>
+                <a href="{{ bookmark.url }}">{{ bookmark.title }}</a> - {{ bookmark.description }}
+                <form action="{% url 'remove_bookmark' bookmark.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_bookmark' %}">Add Bookmark</a>
+</body>
+</html>

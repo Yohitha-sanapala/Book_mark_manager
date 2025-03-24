@@ -1,2 +1,4 @@
 mongo.env
 mongo.txt
+__pycache__/
+.env
