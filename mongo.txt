@@ -1,3 +1,0 @@
-
-
-mongodb+srv://Yohitha:Yohitha@1234@cluster0.gcwez.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
