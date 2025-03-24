@@ -1,6 +1,7 @@
 from database import collection
 from models import Bookmark
 from bson import ObjectId
+from transformers import pipeline
 
 async def create_bookmark(bookmark: Bookmark):
     new_bookmark = await collection.insert_one(bookmark.dict())
@@ -31,3 +32,10 @@ async def delete_bookmark(bookmark_id: str):
     if deleted.deleted_count == 1:
         return {"message": "Bookmark deleted"}
     return {"message": "Bookmark not found"}
+
+classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+
+def categorize_bookmark(title, url):
+    labels = ["Tech", "Education", "Entertainment", "News"]
+    result = classifier(title, labels)
+    return result["labels"][0]

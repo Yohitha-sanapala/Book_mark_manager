@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
-from database import collection
-from models import Bookmark
+from app.database import collection
+from app.models import Bookmark
+from app.routes.bookmark_routes import router
 from crud import create_bookmark, get_bookmarks, update_bookmark, delete_bookmark
 
 app = FastAPI(
